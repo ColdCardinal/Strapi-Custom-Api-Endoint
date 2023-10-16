@@ -714,9 +714,10 @@ export interface ApiTransactTransact extends Schema.CollectionType {
     singularName: 'transact';
     pluralName: 'transacts';
     displayName: 'transact';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     sender: Attribute.String;
@@ -724,7 +725,6 @@ export interface ApiTransactTransact extends Schema.CollectionType {
     amount: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::transact.transact',
       'oneToOne',

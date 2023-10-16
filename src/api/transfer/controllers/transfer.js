@@ -5,9 +5,8 @@ const { sanitize } = require("@strapi/utils");
  */
 module.exports = {
   index: async (ctx) => {
-    const {
-      data: { sender, receiver, amount },
-    } = ctx.request.body;
+    const { sender, receiver, amount } = ctx.request.body;
+    console.log(sender, receiver, amount);
     let entity;
     // deduct amount from sender
     // add amount to reciver
@@ -37,7 +36,7 @@ module.exports = {
     });
 
     const contentType = strapi.contentType('api::transact.transact');
-    const sanitizedEntity = await this.sanitizeOutput(entity, contentType); 
+    const sanitizedEntity = await sanitize.contentAPI.output(entity, contentType); 
     return sanitizedEntity;
   },
 };
